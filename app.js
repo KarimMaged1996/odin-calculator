@@ -164,6 +164,12 @@ equal.addEventListener('click',()=>{
 });
 
 //event listiner to reload the page to clear
-clear.addEventListener('click',()=> location.reload());
-
+clear.addEventListener('click',()=> {
+    count=0;
+    firstNum=[];
+    secondNum=[];
+    operator.textContent='';
+    upperNumber.textContent='';
+    lowerNumber.textContent='';
+});
 
