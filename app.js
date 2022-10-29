@@ -11,12 +11,20 @@ const six=document.querySelector('.six');
 const seven=document.querySelector('.seven');
 const eight=document.querySelector('.eight');
 const nine=document.querySelector('.nine');
-const upperNumber=document.querySelector('#lowerNumber');
+const upperNumber=document.querySelector('#upperNumber');
 const operator=document.querySelector('#operator');
 const lowerNumber=document.querySelector('#lowerNumber');
+const divide=document.querySelector('.divide');
+const multiply=document.querySelector('.multiply');
+const minus=document.querySelector('.minus');
+const plus=document.querySelector('.plus');
+const equal=document.querySelector('.equal');
+const clear=document.querySelector('.clear');
+let count=0;
+
 // array to hold the first number of an operation
 let firstNum=[];
-
+let secondNum=[];
 
 //function and event listiner to change theme
 function changeTheme(){
@@ -30,6 +38,19 @@ function changeTheme(){
 }
 
 theme.addEventListener('click', changeTheme);
+
+//operations function
+function operate(a,b){
+    if(operator.textContent==='/'){
+        return a/b
+    } else if (operator.textContent==='x'){
+        return a*b
+    }  else if (operator.textContent==='-'){
+        return a-b
+    }  else if (operator.textContent==='+'){
+        return a+b
+    }
+}
 
 //event listiners to store every number in the firstNum array
 //and display it on screen
@@ -63,4 +84,86 @@ eight.addEventListener('click',()=>{firstNum.push(8);
 nine.addEventListener('click',()=>{firstNum.push(9);
     lowerNumber.textContent=firstNum.join('')
 });
+
+//event listiners to display the operator on screen
+divide.addEventListener('click',()=>{
+count++;
+if (count===1){
+operator.textContent='/';
+secondNum=firstNum;
+firstNum=[];
+lowerNumber.textContent='';
+upperNumber.textContent=secondNum.join('');
+} else if (count>1){   
+ secondNum=[operate(parseInt(secondNum.join('')),parseInt(firstNum.join('')))];
+ upperNumber.textContent=secondNum.join('');
+ firstNum=[];
+ lowerNumber.textContent=firstNum.join('');
+ operator.textContent='/';
+}
+});
+
+multiply.addEventListener('click',()=>{
+count++;
+if (count===1){
+operator.textContent='x';
+secondNum=firstNum;
+firstNum=[];
+lowerNumber.textContent='';
+upperNumber.textContent=secondNum.join('');
+} else if (count>1){
+secondNum=[operate(parseInt(secondNum.join('')),parseInt(firstNum.join('')))];
+upperNumber.textContent=secondNum.join('');
+firstNum=[];
+lowerNumber.textContent=firstNum.join('');
+operator.textContent='x';
+}
+});
+
+minus.addEventListener('click',()=>{
+count++;
+if (count===1){
+operator.textContent='-';
+secondNum=firstNum;
+firstNum=[];
+lowerNumber.textContent='';
+upperNumber.textContent=secondNum.join('');
+} else if (count>1){
+    secondNum=[operate(parseInt(secondNum.join('')),parseInt(firstNum.join('')))];
+    upperNumber.textContent=secondNum.join('');
+    firstNum=[];
+    lowerNumber.textContent=firstNum.join('');
+    operator.textContent='-';
+}
+});
+
+plus.addEventListener('click',()=>{
+count++;
+if (count===1){
+operator.textContent='+';
+secondNum=firstNum;
+firstNum=[];
+lowerNumber.textContent='';
+upperNumber.textContent=secondNum.join('');
+} else if (count>1){
+    secondNum=[operate(parseInt(secondNum.join('')),parseInt(firstNum.join('')))];
+    upperNumber.textContent=secondNum.join('');
+    firstNum=[];
+    lowerNumber.textContent=firstNum.join('');
+    operator.textContent='+';
+}
+});
+
+equal.addEventListener('click',()=>{
+    firstNum=[operate(parseInt(secondNum.join('')),parseInt(firstNum.join('')))];
+    secondNum=[];
+    upperNumber.textContent=firstNum.join('');
+    lowerNumber.textContent='';
+    operator.textContent='';
+    count=0;
+});
+
+//event listiner to reload the page to clear
+clear.addEventListener('click',()=> location.reload());
+
 
