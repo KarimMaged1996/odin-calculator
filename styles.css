@@ -7,6 +7,13 @@ h1{
     text-align: center;
 }
 
+.theme{
+    max-width: fit-content;
+    background-color: black;
+    color: orange;
+    align-self: center;
+}
+
 .calculator{
     width: 400px;
     height: 500px;
@@ -24,6 +31,23 @@ h1{
     background-color: #e9ecf1;
     margin: 0;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+#upperNumber{
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+#operator{
+    font-size: 20px;
+}
+
+#lowerNumber{
+    font-size: 20px;
 }
 
 

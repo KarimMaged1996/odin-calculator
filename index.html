@@ -5,12 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Odin Calculator</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" id="link">
 </head>
 <body>
     <h1>The Odin Calculator</h1>
+    <button class="theme"> Change Theme </button>
     <div class="calculator">
-        <div class="screen"></div>
+        <div class="screen">
+            <span id="upperNumber"></span>
+            <span id="operator"></span>
+            <span id="lowerNumber"></span>
+        </div>
         <button class="btn divide blue"><span>&#247</span></button>
         <button class="btn multiply blue"> x </button>
         <button class="btn minus blue"> &#8722 </button>
@@ -29,5 +34,6 @@
         <button class="btn zero"> 0 </button>
     </div>
     <p> Crafted By <strong>KarimMaged</strong></p>
+    <script src="app.js"></script>
 </body>
 </html>
